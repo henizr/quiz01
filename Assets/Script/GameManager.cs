@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public Text question;
     public Text answer1, answer2, answer3, answer4, scoreText;
     public Sprite[] logo;
-    int currentIndex = 0;
+    int currentIndex = -1;
     int score = 0;
 
 
@@ -21,12 +21,7 @@ public class GameManager : MonoBehaviour
     {
         dataService = GetComponent<DataService>();
         data = dataService.GetData();
-        /*
-        foreach (string[] item in data)
-        {
-            print(item[0]);
-        }
-        */
+
         SetData();
     }
 
@@ -38,8 +33,8 @@ public class GameManager : MonoBehaviour
 
     public void CheckAnswer1()
     {
-        
-        if (data[currentIndex][1] == data[currentIndex][1])
+
+        if (data[currentIndex][1] == data[currentIndex][2])
         {
             score++;
             print("Win");
@@ -50,8 +45,8 @@ public class GameManager : MonoBehaviour
 
     public void CheckAnswer2()
     {
-        
-        if (data[currentIndex][1] == data[currentIndex][1])
+
+        if (data[currentIndex][1] == data[currentIndex][3])
         {
             score++;
             print("Win");
@@ -63,8 +58,8 @@ public class GameManager : MonoBehaviour
 
     public void CheckAnswer3()
     {
-        
-        if (data[currentIndex][1] == data[currentIndex][1])
+
+        if (data[currentIndex][1] == data[currentIndex][4])
         {
             score++;
             print("Win");
@@ -75,8 +70,8 @@ public class GameManager : MonoBehaviour
 
     public void CheckAnswer4()
     {
-        
-        if (data[currentIndex][1] == data[currentIndex][1])
+
+        if (data[currentIndex][1] == data[currentIndex][5])
         {
             score++;
             print("Win");
@@ -85,13 +80,13 @@ public class GameManager : MonoBehaviour
     }
 
     public void SetData()
-    {        
-        question.text = data[currentIndex][0];
-        scoreText.text = score.ToString();
-        answer1.text = data[currentIndex][1];
-        answer2.text = data[currentIndex][2];
-        answer3.text = data[currentIndex][3];
-        answer4.text = data[currentIndex][4];
+    {
         currentIndex++;
+        scoreText.text = score.ToString();
+        question.text = data[currentIndex][0];
+        answer1.text = data[currentIndex][2];
+        answer2.text = data[currentIndex][3];
+        answer3.text = data[currentIndex][4];
+        answer4.text = data[currentIndex][5];
     }
 }
